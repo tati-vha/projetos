@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de Imagens</title>
+</head>
+<body>
+    <h1>Upload de Imagens</h1>
+
+    <form>
+        <label for="imagens">Selecione as imagens:</label>
+        <input type="file" id="imagens" name="imagens" accept="image/*" multiple required>
+
+        <p id="mensagem"></p>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        const inputImagens = document.getElementById('imagens');
+        const mensagem = document.getElementById('mensagem');
+
+        inputImagens.addEventListener('change', function() {
+            const arquivos = inputImagens.files;
+            const maximoArquivos = 6; //Limite de arquivos permitidos
+
+            if (arquivos.length > maximoArquivos) {
+             mensagem.textContent=Você pode selecionar no máximo {maximoArquivos} arquivos;
+              inputImagens.value = ''; // Limpa o campo se o limite for excedido
+            } else {
+             mensagem.textContent = '';
+            }
+        });
+    </script>
+</body>
+</html>
